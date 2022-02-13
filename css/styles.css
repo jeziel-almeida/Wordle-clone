@@ -220,3 +220,17 @@ header {
 .hidden {
     display: none;
 }
+
+#btn-reset {
+    padding: 10px;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 15px;
+}
+
+#btn-reset:hover {
+    background-color: rgb(226, 96, 96);
+    color: white;
+}
