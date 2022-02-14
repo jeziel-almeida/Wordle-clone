@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let availableSpace = 1;
     let currentWordIndex = 0;
     let guessedWordCount = 0;
+    
+    const finalResultEl = document.getElementById("final-score");
+    finalResultEl.style.display = "none";
 
     const words = ["sagaz", "negro", "mexer", "termo", "justo", "louco", "crise", "citar", "nenem", "ontem", "sabio", "saber", "culto", "adiar", "juizo", "falar", "tempo", "saude", "etnia", "servo", "magoa", "ritmo", "grato", "laico", "cruel", "amigo", "heroi", "leite"];
     let currentWord = words[currentWordIndex];
@@ -102,6 +105,16 @@ document.addEventListener("DOMContentLoaded", () => {
     function showResult() {
         const finalResultEl = document.getElementById("final-score");
         finalResultEl.textContent = "Wordle 1 - You win!";
+        finalResultEl.style.display = "block";
+        
+
+        const playAgain = document.getElementById("play-again");
+        
+        playAgain.style.display = "block";
+
+        playAgain.addEventListener("click", function () {
+            location.reload();
+        });
 
         const totalWins = window.localStorage.getItem("totalWins") || 0;
         window.localStorage.setItem("totalWins", Number(totalWins) + 1);
@@ -112,7 +125,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function showLosingResult() {
         const finalResultEl = document.getElementById("final-score");
-        finalResultEl.textContent = `Wordle 1 - Unsuccessful Today!`;
+        finalResultEl.textContent = `Wordle 1 - Unsuccessful. The word was ${currentWord.toUpperCase()}`;
+        finalResultEl.style.display = "block";
+
+        const playAgain = document.getElementById("play-again");
+        
+        playAgain.style.display = "block";
+
+        playAgain.addEventListener("click", function () {
+            location.reload();
+        });
 
         window.localStorage.setItem("currentStreak", 0);
     }
@@ -221,7 +243,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (guessedWord === currentWord) {
             setTimeout(() => {
-                const okSelected = window.confirm("Well done!");
+                const okSelected = "Well done";
                 if (okSelected) {
                     clearBoard();
                     showResult();
@@ -235,7 +257,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (guessedWords.length === 6 && guessedWord !== currentWord) {
             setTimeout(() => {
-                const okSelected = window.confirm(`Sorry, you have no more guesses! The word is "${currentWord.toUpperCase()}".`);
+                const okSelected = `Sorry, you have no more guesses! The word is "${currentWord.toUpperCase()}".`;
 
                 if (okSelected) {
                     clearBoard();
