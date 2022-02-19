@@ -120,6 +120,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.addEventListener("keyup", (e) => {
             if(e.code == "Enter") {
+                titulo.innerHTML = "PLAY AGAIN";
+                titulo.classList.remove("animate__animated", "animate__shakeX", "animate__tada");
                 titulo.classList.add("play-again-enter");
                 location.reload();
             }
@@ -150,6 +152,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.addEventListener("keyup", (e) => {
             if(e.code == "Enter") {
+                titulo.innerHTML = "PLAY AGAIN";
+                titulo.classList.remove("animate__animated", "animate__shakeX", "animate__tada");
                 titulo.classList.add("play-again-enter");
                 location.reload();
             }
@@ -229,9 +233,23 @@ document.addEventListener("DOMContentLoaded", () => {
         const currentWordArr = getCurrentWordArr();
         const guessedWord = currentWordArr.join("");
 
+        //Antes de verificar se a palavra enviada contém 5 letras é preciso remover as animações já adicionadas
+        const tituloRemove = document.querySelector(".title");
+        tituloRemove.classList.remove("animate__animated", "animate__shakeX", "animate__tada");
+
+        //Se a palavra tiver menos que 5 letras, será adicionada uma animação para sinalizar a frase "Not enough letters". A função será interrompida.
         if (guessedWord.length !== 5) {
+            const titulo = document.querySelector(".title");
+            
+            titulo.innerHTML = "Not enough letters";
+            titulo.classList.add("animate__animated", "animate__shakeX");
+            
             return;
         }
+
+        //A palavra contém mais de 5 letras e a função não foi interrompida. Dessa forma, apaga-se a frase "Not enough letters".
+        const titulo = document.querySelector(".title");
+        titulo.innerHTML = "WORDLE";
 
         const firstLetterId = guessedWordCount * 5 + 1;
 
