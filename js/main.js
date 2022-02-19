@@ -8,8 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const finalResultEl = document.getElementById("final-score");
     finalResultEl.style.display = "none";
 
-    const words = ["sagaz", "negro", "mexer", "termo", "justo", "louco", "crise", "citar", "nenem", "ontem", "sabio", "saber", "culto", "adiar", "juizo", "falar", "tempo", "saude", "etnia", "servo", "magoa", "ritmo", "grato", "laico", "cruel", "amigo", "heroi", "leite"];
+    const words = ["other", "about", "which", "their", "every", "faith", "lunch", "maybe", "serve", "stand", "stone", "eight", "extra", "eager", "entry", "adult", "birth", "brain", "chain", "depth", "chest", "enemy", "cream", "earth", "floor", "grass", "house", "judge", "major", "index", "horse", "noise", "paper", "pilot", "round", "queen", "sight", "truth", "blame", "fight"];
     let currentWord = words[currentWordIndex];
+    console.log(words.length);
 
     initLocalStorage();
     createSquares();
@@ -20,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     function initLocalStorage() {
         const storedCurrentWordIndex = window.localStorage.getItem("currentWordIndex");
-        if (!storedCurrentWordIndex || Number(storedCurrentWordIndex) === 28) {
+        if (!storedCurrentWordIndex || Number(storedCurrentWordIndex) === 40) {
             window.localStorage.setItem("currentWordIndex", currentWordIndex);
         } else {
             currentWordIndex = Number(storedCurrentWordIndex);
@@ -103,16 +104,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function showResult() {
-        const finalResultEl = document.getElementById("final-score");
-        finalResultEl.textContent = "Wordle 1 - You win!";
-        finalResultEl.style.display = "block";
-        
+        // const finalResultEl = document.getElementById("final-score");
+        // finalResultEl.textContent = "Wordle 1 - You win!";
+        // finalResultEl.style.display = "block";
 
-        const playAgain = document.getElementById("play-again");
+        window.alert("Fantastic!");
         
-        playAgain.style.display = "block";
+        var titulo = document.querySelector(".title");
 
-        playAgain.addEventListener("click", function () {
+        titulo.innerHTML = "   Play Again   ";
+        titulo.classList.add("play-again");
+
+        titulo.addEventListener("click", function () {
             location.reload();
         });
 
@@ -124,15 +127,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function showLosingResult() {
-        const finalResultEl = document.getElementById("final-score");
-        finalResultEl.textContent = `Wordle 1 - Unsuccessful. The word was ${currentWord.toUpperCase()}`;
-        finalResultEl.style.display = "block";
+        // const finalResultEl = document.getElementById("final-score");
+        // finalResultEl.textContent = `Wordle 1 - Unsuccessful. The word was ${currentWord.toUpperCase()}`;
+        // finalResultEl.style.display = "block";
 
-        const playAgain = document.getElementById("play-again");
-        
-        playAgain.style.display = "block";
+        window.alert(`Almost! The word was ${currentWord.toUpperCase()}`);
 
-        playAgain.addEventListener("click", function () {
+        var titulo = document.querySelector(".title");
+
+        titulo.innerHTML = "   Play Again   ";
+        titulo.classList.add("play-again");
+
+        titulo.addEventListener("click", function () {
             location.reload();
         });
 
