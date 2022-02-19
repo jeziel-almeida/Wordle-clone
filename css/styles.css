@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Overpass&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;700&display=swap');
 
 
 html, body {
@@ -43,16 +43,17 @@ header {
 .title {
     color: black;
     font-size: 2rem;
-    font-weight: bold;
-    margin: 0.1rem 0 0.1rem 0;
+    font-weight: 700;
+    margin: 0.3rem 0 0.1rem 0;
     text-align: center;
     /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
     font-family: 'Overpass', sans-serif;
+    
 }
 
 @media only screen and (max-width: 480px) {
     .title {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
     }
 }
 
@@ -65,12 +66,12 @@ header {
     flex-direction: column;
 }
 
-#final-score {
+/* #final-score {
     color: white;
     background-color: rgb(94, 144, 185);
     padding: 8px;
-    border-radius: 8px;
-}
+    border-radius: 8px; 
+}*/
 
 #board {
     display: grid;
@@ -107,19 +108,19 @@ header {
 
 .square.incorrect-letter {
     background-color: #787c7e;
-    border-color: #636566;
+    border-color: #787c7e;
     color: white;
 }
 
 .square.correct-letter {
     background-color: #c9b458;
-    border-color: rgb(181, 159, 59);
+    border-color: #c9b458;
     color: white;
 }
 
 .square.correct-letter-in-place {
     background-color: #6aaa64;
-    border-color: rgb(83, 141, 78);
+    border-color: #6aaa64;
     color: white;
 }
 
@@ -263,7 +264,18 @@ header {
 }
 
 .play-again:hover {
-    border-radius: 3px solid rgb(56, 125, 172);
-    background-color: white;
-    color: rgb(56, 125, 172);
+
+    background-color: #6aaa64;
+    color: white;
+    padding-right: 15px;
+    padding-left: 15px;
+    font-size: 21px
+}
+
+.play-again-enter {
+    background-color: #6aaa64;
+    color: white;
+    padding-right: 15px;
+    padding-left: 15px;
+    font-size: 21px
 }

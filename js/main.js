@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const words = ["other", "about", "which", "their", "every", "faith", "lunch", "maybe", "serve", "stand", "stone", "eight", "extra", "eager", "entry", "adult", "birth", "brain", "chain", "depth", "chest", "enemy", "cream", "earth", "floor", "grass", "house", "judge", "major", "index", "horse", "noise", "paper", "pilot", "round", "queen", "sight", "truth", "blame", "fight"];
     let currentWord = words[currentWordIndex];
-    console.log(words.length);
 
     initLocalStorage();
     createSquares();
@@ -112,11 +111,18 @@ document.addEventListener("DOMContentLoaded", () => {
         
         var titulo = document.querySelector(".title");
 
-        titulo.innerHTML = "   Play Again   ";
+        titulo.innerHTML = "PLAY AGAIN";
         titulo.classList.add("play-again");
 
         titulo.addEventListener("click", function () {
             location.reload();
+        });
+
+        document.addEventListener("keyup", (e) => {
+            if(e.code == "Enter") {
+                titulo.classList.add("play-again-enter");
+                location.reload();
+            }
         });
 
         const totalWins = window.localStorage.getItem("totalWins") || 0;
@@ -135,11 +141,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
         var titulo = document.querySelector(".title");
 
-        titulo.innerHTML = "   Play Again   ";
+        titulo.innerHTML = "PLAY AGAIN";
         titulo.classList.add("play-again");
 
         titulo.addEventListener("click", function () {
             location.reload();
+        });
+
+        document.addEventListener("keyup", (e) => {
+            if(e.code == "Enter") {
+                titulo.classList.add("play-again-enter");
+                location.reload();
+            }
         });
 
         window.localStorage.setItem("currentStreak", 0);
@@ -398,6 +411,24 @@ document.addEventListener("DOMContentLoaded", () => {
             modal.style.display = "none";
         });
     }
+
+    //* Verifica a entrado do teclado
+    document.addEventListener("keyup", (e) => {
+        if("KeyA" <= e.code && e.code <= "KeyZ") {
+            const keyPressed = e.code[3].toLowerCase();
+            
+            updateGuessedWords(keyPressed);
+
+        } else if(e.code == "Backspace") {
+            
+            handleDelete();
+            
+        } else if(e.code == "Enter") {
+
+            handleSubmitWord();
+            
+        }
+    });
 
 
 
