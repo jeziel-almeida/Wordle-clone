@@ -86,6 +86,10 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateGuessedWords(letter) {
         const currentWordArr = getCurrentWordArr();
 
+        const addTitulo = document.querySelector(".title");
+        addTitulo.innerHTML = "WORDLE";
+        addTitulo.classList.remove("animate__animated", "animate__shakeX");
+
         if(currentWordArr && currentWordArr.length < 5) {
             currentWordArr.push(letter);
 
@@ -312,6 +316,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function handleDelete() {
+
+        const addTitulo = document.querySelector(".title");
+        addTitulo.innerHTML = "WORDLE";
+        addTitulo.classList.remove("animate__animated", "animate__shakeX");
+
         const currentWordArr = getCurrentWordArr();
 
         if (!currentWordArr.length) {
